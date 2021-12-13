@@ -11,7 +11,6 @@ Comentários sobre o funcionamento da API:
 - Após o registo de um novo utilizador, deverá ir ao terminal do seu IDE e fazer ctrl+click no URL com o formato:  https://ethereal.email/message/... e ativar a conta criada.
 
 - Existe uma conta teste já criada:
-
   - email: covid@api.pt
   - password: 1234
 
