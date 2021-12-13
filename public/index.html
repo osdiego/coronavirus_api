@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Coronavirus News API</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+      <header>
+        <div class="jumbotron text-center">
+          <h1>Coronavirus News API</h1>
+        </div>
+      </header>
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-danger custom">
+          <div class="container-fluid mt-2 ml-3 d-flex">
+              <div class="navbar-collapse collapse justify-content-start" id="navbarResponsiveStart">
+                  <ul class="navbar-nav">
+                      <li><a class="nav-link mx-2" onclick="home()" href="#"><strong>Home</strong></a></li>
+                      <li><a class="nav-link mx-2" onclick="getNews()" href="#"><strong>News</strong></a></li>
+                      <li class="col-sm-6">
+                          <input type="text" class="form-control" id="tag" size="75"
+                          placeholder="Tags: bbc, euronews, foxnews, livescience, cnn, abcnews, nbc"
+                          />
+                          <li>&nbsp;&nbsp;<button type="button" class="btn btn-danger" onclick="getNewsById('')">
+                          Search
+                          </button></li>
+                      </li>
+                  </ul>
+              </div>
+              <div class="navbar-collapse collapse justify-content-end" id="navbarResponsiveEnd">
+                  <ul class="navbar-nav">
+                      <li><a class="nav-link mx-2" id="btnLogoff" href="#"><strong>Log Out</strong></a></li>
+                      <li><a class="nav-link mx-2" id="btnloginModal" href="#"><strong>Login</strong></a></li>
+                      <li><a class="nav-link mx-2" id="btnregisterModal" href="#"><strong>Sign Up</strong></a></li>
+                      <li><a class="nav-link mx-2" id="btnAbout" onclick="about()" href="#"><strong>About</strong></a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+      <main>
+        <section>
+          <div class="carousel" data-carousel id="myCarousel">
+            <button class="carousel-button prev" data-carousel-button="prev">&lsaquo;</button>
+            <button class="carousel-button next" data-carousel-button="next">&rsaquo;</button>
+            <ul data-slides id="slides" animation-name="slideanim">
+              <li class="slide" data-active>
+                <img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" class="d-block w-100 d-block h-100" alt="Coronavirus Image #1" >
+              </li>
+              <li class="slide">
+                <img src="https://images.unsplash.com/photo-1593007791459-4b05e1158229?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block w-100 d-block h-100" alt="Coronavirus Image #2" >
+              </li>
+              <li class="slide">
+                <img src="https://images.unsplash.com/photo-1584036533827-45bce166ad94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" class="d-block w-100 d-block h-100" alt="Coronavirus Image #3" >
+              </li>
+              <li class="slide">
+                <img src="https://images.unsplash.com/photo-1585913430341-6cd755eae696?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="d-block w-100 d-block h-100" alt="Coronavirus Image #4">
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="container" id="news">
+          <!-- Div to be populated by script-->
+          </div>
+        <div class="container" id="about">
+          <h2>About</h2>
+          <hr>
+          <h4>What is an API?</h4>
+          <p>API stands for Application Programming Interface.</p>
+          <p>An API is a kind of program which has a set of functions or services.
+          <p>These set of functions or services allow programmers to acquire some specific features or the data of an application.</p>
+
+          <h4>Web API</h4>
+
+          <p>The focus of this project is to implement a web interface for the API built in the activity 3.</p>
+
+          <p>Web API is an API that can be accessed over the web using the HTTP protocol.</p>
+          <p>It is a framework that helps programmers create and develop HTTP based RESTFUL services.
+            The web API can be developed by using different technologies such as java, ASP.NET, javascript (this is the case here) etc.
+            Web API is used in either a web server or a web browser. Basically Web API is a web development concept.
+            It is limited to Web Application's client-side and also it does not include a web server or web browser details.
+            If an application is to be used on a distributed system and to provide services on different devices like laptops, mobiles, etc then web API services are used.
+            Thus Web API is the enhanced form of the web application.</p>
+        </div>
+        <article class="container" id="article">
+          <div class="container" id="home">
+            <h2>Welcome to the coronavirus news API!</h2>
+
+              <p>This is the front-end for the API built in activity 3</p>
+
+              <h3>Description</h3>
+
+              <p>The purpose of this website is to provide access to an API that searches various news websites for any news that contains a set of keywords related with coronavirus.</p>
+
+              <p>The following section shows an example of the data that this API can provide. If you wish to have full access, please sign up!</p>
+
+              <hr id="sectionseparator">
+
+              <div>
+                <h4>The coronavirus infects fat cells, study suggests</h4>
+                <p>URL: <a href="https://www.livescience.com/coronavirus-may-infect-fat-tissue">https://www.livescience.com/coronavirus-may-infect-fat-tissue</a></p>
+                <p>Source: livescience</p><hr>
+              </div>
+              <div>
+                <h4>Chart: See the day-by-day size of the coronavirus outbreak</h4>
+                <p>URL: <a href="https://www.nbcnews.com/health/health-news/coronavirus-numbers-new-cases-2020-n1157271">https://www.nbcnews.com/health/health-news/coronavirus-numbers-new-cases-2020-n1157271</a></p>
+                <p>Source: nbc</p><hr>
+              </div>
+              <div>
+                <h4>Protection against Omicron coronavirus variant improves with three vaccine doses, Pfizer says</h4>
+                <p>URL: <a href="https://edition.cnn.com/2021/12/08/health/pfizer-omicron-vaccine-data/index.html">https://edition.cnn.com/2021/12/08/health/pfizer-omicron-vaccine-data/index.html</a></p>
+                <p>Source: cnn</p>
+            </div>
+          </div>
+        </article>
+
+        <!--Sign up modal-->
+        <div class="modal fade"
+        id="modalRegister"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        data-bs-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Create an account
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="usernameRegister"
+                    name="usernameRegister"
+                    placeholder="Email"
+                  />
+                  <p id="emailErrorLoginRegister"></p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="passwordRegister"
+                    name="passwordRegister"
+                    placeholder="Password"
+                  />
+                  <p id=passErrorSignup></p>
+                  <p id="statusRegister"></p>
+                </div>
+                <div class="modal-footer d-block">
+                  <button
+                    class="btn btn-success float-end"
+                    id="btnSubmitRegister"
+                    onclick="validateSignUp()"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Login modal-->
+        <div class="modal fade"
+          id="modalLogin"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          data-bs-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Log in to the API
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  id="btnLoginClose"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="usernameLogin"
+                    name="usernameLogin"
+                    placeholder="Email"
+                  />
+                  <p id="emailErrorLogin"></p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="passwordLogin"
+                    name="passwordLogin"
+                    placeholder="Password"
+                  />
+                  <p id="passErrorLogin"></p>
+                  <p id="statusLogin"></p>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe" />
+                  <label class="form-check-label" for="rememberMe"
+                    >Remember me</label
+                  >
+                </div>
+                <div class="modal-footer d-block">
+                  <p id='pRegister' class="float-start">
+                      Don't have an account? <a href="#">Create an account</a>
+                  </p>
+                  <button
+                    class="btn btn-success float-end"
+                    id="btnSubmitLogin"
+                    onclick="validateLogin()"
+                  >
+                    Log In
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer id="footer">
+          <p style="color:white" >©Copyright 2021 by Diego Soares.</p>
+      </footer>
+      <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+      <script src="js/app.js"></script>
+  </body>
+</html>
